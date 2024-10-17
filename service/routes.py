@@ -4,7 +4,7 @@ Account Service
 This microservice handles the lifecycle of Accounts
 """
 # pylint: disable=unused-import
-from flask import jsonify, request, make_response, abort, url_for   # noqa; F401
+from flask import jsonify, request, make_response, abort, url_for  # noqa; F401
 from service.models import Account
 from service.common import status  # HTTP Status Codes
 from . import app  # Import Flask application
@@ -42,7 +42,7 @@ def index():
 def create_accounts():
     """
     Creates an Account
-    This endpoint will create an Account based the data in the body that is posted
+    This endpoint will create an Account based on the data in the body that is posted
     """
     app.logger.info("Request to create an Account")
     check_content_type("application/json")
@@ -56,6 +56,7 @@ def create_accounts():
     return make_response(
         jsonify(message), status.HTTP_201_CREATED, {"Location": location_url}
     )
+
 
 ######################################################################
 # LIST ALL ACCOUNTS
@@ -82,7 +83,7 @@ def list_accounts():
 def get_accounts(account_id):
     """
     Reads an Account
-    This endpoint will read an Account based the account_id that is requested
+    This endpoint will read an Account based on the account_id that is requested
     """
     app.logger.info("Request to read an Account with id: %s", account_id)
     account = Account.find(account_id)
